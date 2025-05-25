@@ -8,7 +8,7 @@
   <nav>
     <div class="container">
       <ul>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
@@ -16,17 +16,21 @@
     </div>
   </nav>
 
-  <div class="container">
-    <header id="page-header">
+  <header id="hero" class="page-section fade-in-section"> <!-- page-section for padding, fade-in for animation -->
+    <div class="hero-content">
       <h1>Transforming Data into Insights</h1>
-      <p>Welcome to my portfolio. I am a passionate data analyst dedicated to uncovering stories and driving decisions through data. I specialize in data visualization and statistical analysis.</p>
-    </header>
-
-    <section id="call-to-action">
+      <p class="subtitle">Welcome to my portfolio. I am a passionate data analyst dedicated to uncovering stories and driving decisions through data. I specialize in data visualization and statistical analysis.</p>
+    </div>
+    <!-- Call to action section will be styled to fit into the hero visually -->
+  </header>
+  <section id="call-to-action" class="fade-in-section">
     <a href="projects.html" class="button-link">View My Projects</a>
     <a href="about.html" class="button-link">Learn More About Me</a>
-    </section>
-  </div>
+  </section>
+  <!-- Note: The main content div.container that previously wrapped header and cta might be removed or adjusted -->
+  <!-- For now, assuming hero and call-to-action are direct children of body or a higher-level wrapper if any -->
 
+
+  <script src="script.js"></script>
 </body>
 </html>

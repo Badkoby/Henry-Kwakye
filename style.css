@@ -1,165 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@700;800&display=swap');
+
+:root {
+  /* Fonts */
+  --font-family-body: 'Inter', sans-serif;
+  --font-family-heading: 'Montserrat', sans-serif;
+
+  /* Light Theme Color Palette */
+  --background-color: #FFFFFF;
+  --text-color: #212529; /* Darker gray for better contrast */
+  --primary-color: #007bff; /* Blue */
+  --primary-color-dark: #0056b3; /* Darker blue for active state */
+  --secondary-color: #6c757d; /* Muted gray */
+  --light-bg-color: #f8f9fa; /* Very light gray for card/section backgrounds */
+  --border-color: #dee2e6; /* Standard border color */
+  --link-color: var(--primary-color);
+  --link-hover-color: #0056b3; /* Darker blue for hover */
+  --heading-color: #343a40; /* Slightly different dark for headings */
+  --nav-bg-color: var(--heading-color); /* Using heading color for nav background */
+  --nav-link-color: var(--background-color); /* White links on dark nav */
+  --nav-link-hover-color: var(--primary-color); /* Use primary color for hover, was #ced4da */
+  --nav-link-active-color: var(--primary-color); /* Active link color */
+  --nav-link-active-border-color: var(--primary-color); /* Active link border color */
+
+
+  /* Spacing & Radius (optional, but good for consistency) */
+  --spacing-unit: 1rem; /* Base unit for padding/margins */
+  --border-radius: 0.25rem; /* Standard border radius */
+}
+
 /* === General Refinements === */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Refined font stack */
+  font-family: var(--font-family-body);
   line-height: 1.6;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
-  color: #333;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 .container {
   width: 80%;
   margin: auto;
   overflow: hidden; /* Keeps child elements from breaking layout */
-  padding: 0 20px; /* Horizontal padding */
+  padding: 0 calc(var(--spacing-unit) * 1.5); /* Consistent horizontal padding */
 }
 
-/* Navigation Refinements */
-nav {
-  background-color: #333;
-  color: #fff;
-  padding: 1rem 0;
-  border-bottom: 3px solid #555; /* Example accent */
-}
-
-nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-}
-
-nav ul li {
-  display: inline-block;
-  margin: 0 15px; /* Adjusted margin */
-}
-
-nav ul li a {
-  color: #fff;
-  text-decoration: none;
-  padding: 5px 0; /* Add some padding for easier clicking */
-  transition: color 0.3s ease; /* Smooth transition for hover */
-}
-
-nav ul li a:hover, nav ul li a.active { /* Assuming an active class might be added later */
-  color: #bbb; /* Lighter color on hover/active */
-  /* border-bottom: 2px solid #bbb; /* Example hover underline */
-}
-
-/* Button-like Link Standardization */
-.button-link { /* New class to standardize buttons */
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  text-align: center;
-}
-
-.button-link:hover {
-  background-color: #555;
-  color: #fff; /* Ensure text color remains white on hover */
+/* Page Section for consistent vertical spacing */
+.page-section {
+  padding-top: calc(var(--spacing-unit) * 2.5);
+  padding-bottom: calc(var(--spacing-unit) * 2.5);
 }
 
 /* Headings */
-h1, h2, h3 {
-  color: #333; /* Consistent heading color */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  color: var(--heading-color);
+  font-weight: 700; 
+}
+h1 { 
+  font-weight: 800; 
+  font-size: 2.5em; /* Ensure h1 is impactful */
+  margin-top: 0; /* Typically 0 if .page-section handles top spacing */
+  margin-bottom: var(--spacing-unit);
+} 
+h2 { 
+  font-size: 2em;
+  margin-top: calc(var(--spacing-unit) * 2); 
+  margin-bottom: var(--spacing-unit);
+}
+h3 {
+  font-size: 1.5em;
+  margin-top: calc(var(--spacing-unit) * 1.5);
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
 }
 
-.container h1, .container h2, .container h3 { /* Headings within containers */
-    margin-top: 20px;
-    margin-bottom: 20px;
+/* General Paragraph Styling */
+p {
+  margin-bottom: var(--spacing-unit);
+  line-height: 1.7; 
 }
-.container h1 { text-align: center; } /* Keep page titles centered */
+
+/* General List Styling */
+ul:not(.skills-list):not(nav ul):not(.contact-links), 
+ol {
+  padding-left: calc(var(--spacing-unit) * 2); /* Indentation for general lists */
+  margin-bottom: var(--spacing-unit);
+}
+
+
+/* Navigation Refinements */
+nav {
+  background-color: var(--nav-bg-color, var(--heading-color)); /* Fallback if --nav-bg-color is not set */
+  color: var(--nav-link-color, #f5f5f5);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  position: sticky; /* Make nav sticky */
+  top: 0;
+  z-index: 1000; /* Ensure it's above other content */
+  /* border-bottom: 3px solid var(--primary-color); /* Original border, replaced by link borders */
+}
+/* nav .container is already styled for width and centering, padding was here before, now on links */
+/* nav ul is already styled for list-style, padding, margin, text-align */
+
+nav ul li {
+  display: inline-block;
+  margin: 0; /* Remove individual margin, rely on link padding */
+}
+
+nav ul li a {
+  display: inline-block; /* Important for padding and hover effects */
+  font-family: var(--font-family-body);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--nav-link-color, #f5f5f5);
+  padding: var(--spacing-unit) calc(var(--spacing-unit) * 1.25); /* Generous padding */
+  text-decoration: none;
+  transition: color 0.3s ease, background-color 0.3s ease, border-bottom-color 0.3s ease;
+  border-bottom: 3px solid transparent; /* Placeholder for active/hover border */
+}
+
+nav ul li a:hover {
+  color: var(--nav-link-hover-color, var(--primary-color));
+  background-color: rgba(255, 255, 255, 0.05); /* Very subtle bg change on hover if nav is dark */
+  border-bottom-color: var(--nav-link-hover-color, var(--primary-color)); /* Show border on hover */
+}
+
+nav ul li a.active {
+  color: var(--nav-link-active-color, var(--primary-color));
+  font-weight: 700; /* Slightly bolder for active */
+  border-bottom-color: var(--nav-link-active-border-color, var(--primary-color));
+  /* background-color: rgba(0,0,0,0.1); /* Optional: subtle bg for active if nav is dark */
+}
+
+/* General Link Styling */
+a {
+  color: var(--link-color);
+  text-decoration: none; 
+}
+a:hover {
+  color: var(--link-hover-color);
+  text-decoration: underline; 
+}
+
+
+/* Button-like Link Standardization */
+.button-link { 
+  display: inline-block;
+  padding: calc(var(--spacing-unit) * 0.75) calc(var(--spacing-unit) * 1.5);
+  background-color: var(--primary-color);
+  color: var(--background-color); 
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  transition: background-color 0.3s ease;
+  text-align: center;
+  font-family: var(--font-family-body); 
+  margin: calc(var(--spacing-unit) * 0.25); 
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Added transform and box-shadow */
+}
+
+.button-link:hover {
+  background-color: var(--link-hover-color); 
+  color: var(--background-color); 
+  text-decoration: none; 
+  transform: translateY(-2px); /* Subtle lift */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow */
+}
+
+.button-link:active {
+  transform: translateY(0) scale(0.98); /* Pressed effect: slightly down from hover, or from base if not hovered */
+  background-color: var(--primary-color-dark, #0056b3); /* Use a darker shade of primary */
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.2); /* Inset shadow for pressed look */
+}
 
 
 /* Homepage specific styles */
-header#page-header { /* Giving the header in index.html a specific id for styling */
-  padding: 2rem 0;
+#hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
   text-align: center;
-  border-bottom: 1px solid #ddd; /* Example separator */
+  background: linear-gradient(135deg, var(--nav-bg-color, #2c3e50), var(--heading-color, #343a40));
+  color: var(--background-color, #fff);
+  padding-top: 0; /* Override page-section padding */
+  padding-bottom: 0; /* Override page-section padding */
+  /* border-bottom: none; /* Ensure no border from previous #page-header styles */
 }
 
-header#page-header h1 {
-  margin-bottom: 0.5rem;
+.hero-content {
+  max-width: 800px;
+  margin-bottom: calc(var(--spacing-unit) * 2);
 }
 
-section#call-to-action {
-  padding: 2rem 0;
-  text-align: center;
+#hero h1 {
+  font-size: 3.5em;
+  font-weight: 800;
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
+  color: var(--background-color, #fff); /* Ensure it's light */
+  overflow: hidden; /* For typing animation */
+  /* border-right: .15em solid var(--primary-color); /* Optional: typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  letter-spacing: .05em; /* Adjust as needed */
+  animation: 
+    typing 3.5s steps(40, end) forwards;
+    /* blink-caret .75s step-end infinite; /* Optional: if using border-right cursor */
 }
+
+#hero p.subtitle {
+  font-size: 1.3em;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 0; /* Handled by hero-content margin */
+}
+
+#call-to-action {
+  /* Visually part of the hero, so remove its own top padding if it was a separate section */
+  padding-top: 0; 
+  background-color: transparent; /* Ensure it doesn't have a conflicting background */
+  /* text-align: center; /* Centering handled by #hero align-items: center */
+}
+
+/* Adjust buttons within the hero/CTA context */
+#hero ~ #call-to-action .button-link, /* If #call-to-action is a sibling following #hero */
+#hero .button-link { /* If #call-to-action were nested (it's not in current HTML) */
+  padding: calc(var(--spacing-unit) * 0.9) calc(var(--spacing-unit) * 1.8);
+  font-size: 1.1em;
+  background-color: var(--primary-color); /* Stand out against dark hero */
+  color: #fff; /* Ensure text is light */
+}
+
 
 /* projects.html specific styles */
+/* .project-grid parent container (.page-section) handles overall vertical padding */
 .project-grid {
-  display: grid; /* Using CSS Grid */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid columns */
-  gap: 20px; /* Space between grid items */
-  padding: 20px 0; /* Padding around the grid */
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: calc(var(--spacing-unit) * 1.5); /* Consistent gap */
+  /* padding: var(--spacing-unit) 0; This might be redundant if .page-section handles it */
 }
 
 .project-card {
-  border: 1px solid #ddd; /* Border for each card */
-  padding: 20px; /* Padding inside each card */
-  background-color: #fff; /* White background for cards */
-  border-radius: 5px; /* Rounded corners for cards */
+  border: 1px solid var(--border-color); 
+  padding: calc(var(--spacing-unit) * 1.25); 
+  background-color: var(--light-bg-color); 
+  border-radius: var(--border-radius); 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1), 0 6px 20px rgba(0,0,0,0.1); /* Enhanced shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover */
+}
+
+.project-card:hover {
+  transform: translateY(-5px) scale(1.02); /* Lift and scale effect */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15), 0 12px 30px rgba(0,0,0,0.15); /* More pronounced shadow on hover */
 }
 
 .project-card h2 {
-  margin-top: 0; /* Remove default top margin from h2 */
+  margin-top: 0; 
+  color: var(--heading-color); 
+  margin-bottom: calc(var(--spacing-unit) * 0.75); /* Space below card title */
 }
 
 /* Project Detail Page Specific Styles */
+/* .project-detail-container is a .page-section, handles vertical padding */
 .project-meta {
   font-size: 0.9em;
-  color: #666;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 10px;
+  color: var(--secondary-color); 
+  margin-bottom: var(--spacing-unit);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: calc(var(--spacing-unit) * 0.5);
 }
 
-.project-detail-container h2 {
-  margin-top: 30px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #eee; /* Light separator for sections */
-  padding-bottom: 5px;
-  color: #333; 
+.project-detail-container h2 { /* Inherits from general h2, specific border if needed */
+  border-bottom: 1px solid var(--border-color); 
+  padding-bottom: calc(var(--spacing-unit) * 0.25);
 }
 
-.project-detail-container p,
-.project-detail-container ul {
-  margin-bottom: 15px;
-}
-
-.project-detail-container ul {
-  list-style-position: inside;
-  padding-left: 0; 
-}
-
-.project-detail-container ul li a {
-  color: #337ab7; 
-  text-decoration: none;
-}
-
-.project-detail-container ul li a:hover {
-  text-decoration: underline;
+.project-detail-container p, /* General p styling applies */
+.project-detail-container ul:not(.contact-links) { /* General ul styling applies */
+  margin-bottom: var(--spacing-unit);
 }
 
 .project-visualization-placeholder {
-  margin-top: 15px;
-  margin-bottom: 15px;
-  border: 1px dashed #ccc;
+  margin-top: var(--spacing-unit);
+  margin-bottom: var(--spacing-unit);
+  border: 1px dashed var(--secondary-color); 
+  background-color: var(--light-bg-color); 
+  padding: var(--spacing-unit); 
 }
 
 /* About Page Specific Styles */
-.about-container h2 {
-  margin-top: 30px;
-  margin-bottom: 10px;
-  color: #333;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 5px;
+/* .about-container is a .page-section, handles vertical padding */
+.about-container h2 { /* Inherits from general h2, specific border if needed */
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: calc(var(--spacing-unit) * 0.25);
 }
 
 .skills-list {
@@ -167,86 +299,163 @@ section#call-to-action {
   padding-left: 0;
   display: flex; 
   flex-wrap: wrap; 
-  gap: 10px; 
+  gap: calc(var(--spacing-unit) * 0.5); 
+  margin-bottom: var(--spacing-unit); /* Space after skills list */
 }
 
 .skills-list li {
-  background-color: #e7e7e7; 
-  padding: 8px 15px;
-  border-radius: 5px; 
+  background-color: var(--light-bg-color); 
+  border: 1px solid var(--border-color); 
+  color: var(--secondary-color); 
+  padding: calc(var(--spacing-unit) * 0.5) var(--spacing-unit);
+  border-radius: var(--border-radius); 
   font-size: 0.9em;
 }
 
 /* Contact Page Specific Styles */
-.contact-container p {
-  margin-bottom: 15px;
+/* .contact-container is a .page-section, handles vertical padding */
+.contact-container p { /* General p styling applies */
   line-height: 1.7; 
 }
 
 .contact-links {
   list-style: none;
   padding-left: 0;
+  margin-bottom: var(--spacing-unit); /* Space after contact links */
 }
 
 .contact-links li {
-  margin-bottom: 10px;
+  margin-bottom: calc(var(--spacing-unit) * 0.5);
   font-size: 1.1em; 
 }
 
-.contact-links li a {
-  color: #337ab7; 
-  text-decoration: none;
+
+/* === Scroll Animation Styling === */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px); /* Start slightly lower */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.contact-links li a:hover {
-  text-decoration: underline;
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
-
 
 /* === Responsive Design === */
 @media (max-width: 768px) {
   .container {
-    width: 90%; /* Wider container on medium screens */
+    width: 90%; 
   }
 
   nav ul li {
-    display: block; /* Stack nav items */
-    margin: 10px 0; /* Adjust margin for stacked items */
+    display: block; 
+    /* margin: calc(var(--spacing-unit) * 0.5) 0; /* Replaced by link padding/border */
+    margin-bottom: 0; /* Remove if relying on link padding for separation */
+  }
+  nav ul li a {
+    display: block; /* Make the link take full width for easier tapping */
+    padding: calc(var(--spacing-unit) * 0.8) calc(var(--spacing-unit) * 1.25); /* Adjust padding for stacked items */
+    text-align: center; /* Center text in stacked links */
+    border-bottom: 1px solid rgba(255,255,255,0.1); /* Separator for stacked links if nav is dark */
+  }
+  nav ul li:last-child a {
+    border-bottom: none; /* Remove border from last item */
+  }
+  nav ul li a:hover { /* Keep hover border consistent with desktop */
+    border-bottom-color: var(--nav-link-hover-color, var(--primary-color)); 
+    /* background-color: var(--primary-color); /* Optional: more pronounced hover for mobile */
+    /* color: var(--nav-bg-color); */
+  }
+   nav ul li a.active { /* Ensure active border is still visible if it was only bottom */
+     border-bottom-width: 3px; /* Keep consistent with desktop active state */
+     border-bottom-color: var(--nav-link-active-border-color, var(--primary-color)); /* Explicitly set active border color */
   }
 
-  .project-grid {
-    /* Already responsive with auto-fit, but can adjust minmax if needed */
-    /* grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); */
+  /* Hero Responsive Adjustments */
+  #hero h1 {
+    font-size: 2.8em;
+    /* Adjust animation steps if text wraps or looks odd */
+    animation: typing 3.5s steps(30, end) forwards; /* Example adjustment */
+  }
+  #hero p.subtitle {
+    font-size: 1.1em;
   }
 
-  /* Adjust skills list for better stacking if needed */
   .skills-list {
-    justify-content: center; /* Center skill tags when they wrap */
+    justify-content: center; 
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 600px) { /* General small screen adjustments */
   .container {
-    width: 95%; /* Even wider on small screens */
-    padding: 0 10px;
+    width: 95%; 
+    padding: 0 calc(var(--spacing-unit) * 0.5);
   }
 
   .project-grid {
-    grid-template-columns: 1fr; /* Single column for project cards */
+    grid-template-columns: 1fr; 
   }
 
-  /* Homepage CTA buttons stack */
-  section#call-to-action a.button-link {
-    display: block;
-    margin: 10px auto; /* Center them and add vertical margin */
-    width: 70%; /* Give them a bit of width */
-  }
-
-  /* Reduce font size for main headings on small screens */
-  h1 {
+  /* Adjust general h1/h2 for small screens, but hero has its own sizing */
+  h1:not(#hero h1) { /* Exclude hero h1 from general override */
     font-size: 2em;
   }
   h2 {
     font-size: 1.5em;
   }
+}
+
+@media (max-width: 480px) { /* Specific small screen adjustments for Hero */
+  #hero h1 {
+    font-size: 2.2em;
+    animation: typing 3.5s steps(25, end) forwards; /* Example adjustment */
+  }
+  #hero p.subtitle {
+    font-size: 1em; /* Further reduce subtitle font size */
+  }
+  /* Button adjustments for very small screens if needed */
+  #hero ~ #call-to-action .button-link {
+    padding: calc(var(--spacing-unit) * 0.8) calc(var(--spacing-unit) * 1.5);
+    font-size: 1em;
+  }
+}
+
+/* Keyframes for typing animation */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* Optional: if using border-right cursor */
+/*
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--primary-color); }
+}
+*/
+
+/* Custom Scrollbar Styling (for WebKit browsers) */
+::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+  height: 10px; /* Height of the scrollbar (for horizontal scrollbars) */
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-bg-color, #f1f1f1); /* Background of the scrollbar track */
+  border-radius: var(--border-radius, 0.25rem);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-color, #888); /* Color of the scrollbar thumb */
+  border-radius: var(--border-radius, 0.25rem);
+  border: 2px solid var(--light-bg-color, #f1f1f1); /* Creates padding around thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color, #555); /* Color of the thumb on hover */
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--light-bg-color, #f1f1f1); /* Background of the scrollbar corner (if visible) */
 }
