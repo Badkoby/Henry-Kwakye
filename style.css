@@ -31,8 +31,20 @@
   --border-radius-small: 4px;
   --border-radius-medium: 8px;
   --border-radius-large: 16px;
-
+  
   /* Nav specific */
+  nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex; /* Makes list items appear in a row */
+  gap: 20px;     /* Optional: space between items */
+}
+
+nav li {
+  display: inline; /* Optional, with flex it's not necessary */
+}
+
   --nav-bg-color: var(--primary-dark);
   --nav-link-color: #ffffff;
   --nav-link-hover-color: var(--primary-light);
