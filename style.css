@@ -128,6 +128,14 @@ nav {
   top: 0;
   z-index: 1000;
 }
+/* nav .container is already styled for width and centering, padding was here before, now on links */
+/* nav ul is already styled for list-style, padding, margin, text-align */
+
+nav ul li {
+  display: inline-block !important; /* Added !important */
+  margin: 0; /* Remove individual margin, rely on link padding */
+}
+
 nav ul li a {
   display: inline-block;
   font-family: var(--font-family-body);
@@ -441,7 +449,6 @@ a:hover {
   nav ul li:last-child a { border-bottom: none; }
   nav ul li a:hover { 
     /* border-bottom-color: var(--nav-link-hover-color, var(--primary-main)); /* This line removed */
-    /* Other hover effects like background or text color can remain if they were here */
   }
   nav ul li a.active { border-bottom-width: 3px; border-bottom-color: var(--nav-link-active-border-color, var(--primary-main)); }
   #hero h1 { font-size: 2.8em; } 
