@@ -16,29 +16,32 @@
   --info-main: #0288d1;
   --success-main: #2e7d32;
 
-  /* Shadows (MUI-like elevation) - Can be simplified or expanded */
+  /* Shadows (MUI-like elevation) */
   --box-shadow-1: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
-  --box-shadow-2: 0px 3px 3px -2px rgba(0,0,0,0.2), 0px 3px 4px 0px rgba(0,0,0,0.14), 0px 1px 8px 0px rgba(0,0,0,0.12); /* Example for slightly more elevation */
+  --box-shadow-2: 0px 3px 3px -2px rgba(0,0,0,0.2), 0px 3px 4px 0px rgba(0,0,0,0.14), 0px 1px 8px 0px rgba(0,0,0,0.12);
   --box-shadow-hover-1: 0px 4px 5px -2px rgba(0,0,0,0.2), 0px 7px 10px 1px rgba(0,0,0,0.14), 0px 2px 16px 1px rgba(0,0,0,0.12);
-  --box-shadow-card-hover: 0px 8px 10px -5px rgba(0,0,0,0.2), 0px 16px 24px 2px rgba(0,0,0,0.14), 0px 6px 30px 5px rgba(0,0,0,0.12); /* More pronounced for card hover */
+  --box-shadow-card-hover: 0px 8px 10px -5px rgba(0,0,0,0.2), 0px 16px 24px 2px rgba(0,0,0,0.14), 0px 6px 30px 5px rgba(0,0,0,0.12);
 
-
-  /* Typography (retaining existing font families for now, can be updated) */
+  /* Typography */
   --font-family-body: 'Inter', sans-serif;
   --font-family-heading: 'Montserrat', sans-serif;
 
   /* Spacing & Radius */
-  --spacing-unit: 1rem; /* Base unit for padding/margins (e.g., 16px) */
+  --spacing-unit: 1rem;
   --border-radius-small: 4px;
   --border-radius-medium: 8px;
-  --border-radius-large: 16px; /* For cards, matching MUI's theme.shape.borderRadius * 4 or similar */
+  --border-radius-large: 16px;
 
-  /* Nav specific (can be merged or kept separate) */
-  --nav-bg-color: var(--primary-dark); /* Darker blue for nav */
+  /* Nav specific */
+  --nav-bg-color: var(--primary-dark);
   --nav-link-color: #ffffff;
   --nav-link-hover-color: var(--primary-light);
   --nav-link-active-color: var(--primary-light);
   --nav-link-active-border-color: var(--primary-light);
+
+  /* Footer Specific */
+  --footer-bg-color: #455a64; 
+  --footer-text-color: rgba(255, 255, 255, 0.8);
 }
 
 /* === General Refinements === */
@@ -51,18 +54,17 @@ body {
   color: var(--text-primary);
 }
 
-html { /* Ensure rem units are consistent */
+html {
   font-size: 16px; 
 }
 
 .container {
   width: 80%;
   margin: auto;
-  overflow: hidden; /* Keeps child elements from breaking layout */
-  padding: 0 calc(var(--spacing-unit) * 1.5); /* Consistent horizontal padding */
+  overflow: hidden;
+  padding: 0 calc(var(--spacing-unit) * 1.5);
 }
 
-/* Page Section for consistent vertical spacing */
 .page-section {
   padding-top: calc(var(--spacing-unit) * 2.5);
   padding-bottom: calc(var(--spacing-unit) * 2.5);
@@ -71,12 +73,12 @@ html { /* Ensure rem units are consistent */
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-family-heading);
-  color: var(--text-primary); /* Updated to use text-primary for headings */
-  font-weight: 700; /* Default bold for headings */
+  color: var(--text-primary);
+  font-weight: 700;
 }
 h1 { 
   font-size: 3rem; 
-  font-weight: 700; /* Consistent with example */
+  font-weight: 700;
   line-height: 1.2; 
   margin-top: 0; 
   margin-bottom: calc(var(--spacing-unit) * 2);
@@ -101,98 +103,78 @@ h4 {
   line-height: 1.5;
   margin-bottom: var(--spacing-unit);
 }
-/* h5 and h6 can be added if needed, following a similar pattern */
 
 /* General Paragraph Styling */
 p {
   font-size: 1rem;
   line-height: 1.8; 
-  color: var(--text-secondary); /* Default paragraph text uses text-secondary */
+  color: var(--text-secondary);
   margin-bottom: var(--spacing-unit);
 }
-/* If some paragraphs need to be primary text color, a utility class like .text-primary-p might be needed */
-/* or specific overrides in sections e.g. #hero p.subtitle */
-
 
 /* General List Styling */
 ul:not(.skills-list):not(nav ul):not(.contact-links), 
 ol {
-  padding-left: calc(var(--spacing-unit) * 2); /* Indentation for general lists */
+  padding-left: calc(var(--spacing-unit) * 2);
   margin-bottom: var(--spacing-unit);
 }
 
-
 /* Navigation Refinements */
 nav {
-  background-color: var(--nav-bg-color, var(--heading-color)); /* Fallback if --nav-bg-color is not set */
+  background-color: var(--nav-bg-color, var(--text-primary)); 
   color: var(--nav-link-color, #f5f5f5);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-  position: sticky; /* Make nav sticky */
+  position: sticky;
   top: 0;
-  z-index: 1000; /* Ensure it's above other content */
-  /* border-bottom: 3px solid var(--primary-color); /* Original border, replaced by link borders */
+  z-index: 1000;
 }
-/* nav .container is already styled for width and centering, padding was here before, now on links */
-/* nav ul is already styled for list-style, padding, margin, text-align */
-
-nav ul li {
-  display: inline-block;
-  margin: 0; /* Remove individual margin, rely on link padding */
-}
-
 nav ul li a {
-  display: inline-block; /* Important for padding and hover effects */
+  display: inline-block;
   font-family: var(--font-family-body);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: var(--nav-link-color, #f5f5f5);
-  padding: var(--spacing-unit) calc(var(--spacing-unit) * 1.25); /* Generous padding */
+  padding: var(--spacing-unit) calc(var(--spacing-unit) * 1.25);
   text-decoration: none;
   transition: color 0.3s ease, background-color 0.3s ease, border-bottom-color 0.3s ease;
-  border-bottom: 3px solid transparent; /* Placeholder for active/hover border */
+  border-bottom: 3px solid transparent;
 }
-
 nav ul li a:hover {
-  color: var(--nav-link-hover-color, var(--primary-color));
-  background-color: rgba(255, 255, 255, 0.05); /* Very subtle bg change on hover if nav is dark */
-  border-bottom-color: var(--nav-link-hover-color, var(--primary-color)); /* Show border on hover */
+  color: var(--nav-link-hover-color, var(--primary-main)); 
+  background-color: rgba(255, 255, 255, 0.05);
 }
-
 nav ul li a.active {
-  color: var(--nav-link-active-color, var(--primary-color));
-  font-weight: 700; /* Slightly bolder for active */
-  border-bottom-color: var(--nav-link-active-border-color, var(--primary-color));
-  /* background-color: rgba(0,0,0,0.1); /* Optional: subtle bg for active if nav is dark */
+  color: var(--nav-link-active-color, var(--primary-main)); 
+  font-weight: 700;
+  border-bottom-color: var(--nav-link-active-border-color, var(--primary-main)); 
 }
 
 /* General Link Styling */
 a {
-  color: var(--primary-main); /* Updated link color */
+  color: var(--primary-main);
   text-decoration: none; 
 }
 a:hover {
-  color: var(--primary-dark); /* Updated link hover color */
+  color: var(--primary-dark);
   text-decoration: underline; 
 }
-
 
 /* Button-like Link Standardization */
 .button-link {
   display: inline-block;
-  padding: 0.75rem 1.5rem; /* py:2, px:4 equivalent for 16px base */
+  padding: 0.75rem 1.5rem;
   font-family: var(--font-family-body);
-  font-size: 1rem; /* Matches example's 1.1rem if base is ~14.5px, or adjust */
+  font-size: 1rem;
   font-weight: 600;
-  text-transform: none; /* As per example */
-  border-radius: var(--border-radius-large); /* 12px in example, use variable */
+  text-transform: none;
+  border-radius: var(--border-radius-large);
   transition: all 0.2s ease-in-out;
   text-decoration: none;
   cursor: pointer;
-  border: 2px solid transparent; /* Base for border transitions */
-  margin: calc(var(--spacing-unit) * 0.25); /* Retain small margin */
+  border: 2px solid transparent;
+  margin: calc(var(--spacing-unit) * 0.25);
 }
-
 .button-link.contained {
   background-color: var(--primary-main);
   color: #fff;
@@ -200,38 +182,34 @@ a:hover {
 }
 .button-link.contained:hover {
   background-color: var(--primary-dark);
-  color: #fff; /* Ensure text color remains white */
+  color: #fff;
   box-shadow: var(--box-shadow-hover-1);
   transform: translateY(-2px);
-  text-decoration: none; /* Ensure no underline */
+  text-decoration: none;
 }
 .button-link.contained:active {
-  background-color: var(--primary-dark); /* Keep dark */
+  background-color: var(--primary-dark);
   transform: translateY(0) scale(0.98);
   box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
 }
-
 .button-link.outlined {
   background-color: transparent;
   color: var(--primary-main);
-  border: 2px solid var(--primary-main); /* Use var(--border-color) if primary border is too strong */
+  border: 2px solid var(--primary-main);
 }
 .button-link.outlined:hover {
-  background-color: rgba(25, 118, 210, 0.08); /* Subtle primary bg wash */
+  background-color: rgba(25, 118, 210, 0.08);
   border-color: var(--primary-dark);
-  color: var(--primary-dark); /* Ensure text color darkens with border */
+  color: var(--primary-dark);
   transform: translateY(-2px);
-  box-shadow: var(--box-shadow-1); /* Add subtle shadow on hover */
-  text-decoration: none; /* Ensure no underline */
+  box-shadow: var(--box-shadow-1);
+  text-decoration: none;
 }
 .button-link.outlined:active {
   background-color: rgba(25, 118, 210, 0.12);
   transform: translateY(0) scale(0.98);
   box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
 }
-
-/* Remove general hover/active for .button-link if variants cover all cases */
-/* Or ensure these are defaults if no variant is applied */
 .button-link:hover:not(.contained):not(.outlined) {
   transform: translateY(-2px);
   box-shadow: var(--box-shadow-1);
@@ -241,71 +219,70 @@ a:hover {
   box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
 }
 
-
 /* Homepage specific styles */
 #hero {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 80vh; /* Adjust as needed, could be 70vh or other values */
+  min-height: 80vh;
   text-align: center;
-  background: linear-gradient(135deg, var(--nav-bg-color, #2c3e50), var(--heading-color, #343a40));
-  color: #fff; /* Default text color for hero, overridden by specific elements */
+  background: linear-gradient(135deg, var(--nav-bg-color, #2c3e50), var(--text-primary, #343a40)); 
+  color: #fff;
   padding-top: 0; 
   padding-bottom: 0; 
 }
-
 .hero-eyebrow {
   font-family: var(--font-family-heading);
   text-transform: uppercase;
   letter-spacing: 0.2em;
   font-size: 1rem;
   font-weight: 600;
-  color: var(--primary-main); /* Blue, as in example */
+  color: var(--primary-main);
   margin-bottom: calc(var(--spacing-unit) * 1);
 }
-
 .hero-content {
-  max-width: 800px; /* Or adjust as needed */
-  margin-bottom: calc(var(--spacing-unit) * 2); /* Space between text and CTA buttons */
+  max-width: 800px;
+  margin-bottom: calc(var(--spacing-unit) * 2);
 }
-
 #hero h1 {
-  font-size: 3.5em; /* Retain existing size */
-  font-weight: 800; /* Retain existing weight */
-  margin-bottom: calc(var(--spacing-unit) * 0.75); /* Retain existing margin */
-  /* Gradient Text */
+  font-size: 3.5em; 
+  font-weight: 800; 
+  margin-bottom: calc(var(--spacing-unit) * 0.75); 
+  color: var(--background-paper, #fff); 
+}
+.typing-text {
+  display: inline-block; 
+  overflow: hidden;
+  white-space: nowrap;
+  letter-spacing: 0.02em; 
+  animation: typing-inner 3s steps(32, end) forwards; 
+  width: 0; 
   background: linear-gradient(135deg, var(--primary-light) 30%, var(--primary-main) 90%);
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent; /* Make the actual text color transparent */
-  /* Fallback for non-supporting browsers (already set to #fff or var(--background-color) effectively by #hero color) */
-  overflow: hidden; 
-  white-space: nowrap; 
-  letter-spacing: .05em; 
-  animation: 
-    typing 3.5s steps(40, end) forwards;
+  color: transparent;
 }
-
+@supports not (-webkit-background-clip: text) and (not (background-clip: text)) {
+  .typing-text {
+    color: var(--primary-light); 
+  }
+}
 #hero p.subtitle {
-  font-size: 1.3em; /* Retain existing size */
-  color: rgba(255, 255, 255, 0.85); /* Ensure good contrast */
-  margin-bottom: 0; /* Retain existing margin */
+  font-size: 1.3em;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 0;
 }
-
 #call-to-action {
   padding-top: 0; 
   background-color: transparent; 
-  margin-top: calc(var(--spacing-unit) * 2); /* Added margin for spacing from hero-content */
+  margin-top: calc(var(--spacing-unit) * 2);
 }
-
-/* Adjust buttons within the hero/CTA context */
 #hero ~ #call-to-action .button-link, 
 #hero .button-link { 
-  padding: calc(var(--spacing-unit) * 0.9) calc(var(--spacing-unit) * 1.8); /* Retain existing */
-  font-size: 1.1em; /* Retain existing */
-  background-color: var(--primary-main); /* Ensure it uses the new primary variable */
+  padding: calc(var(--spacing-unit) * 0.9) calc(var(--spacing-unit) * 1.8);
+  font-size: 1.1em;
+  background-color: var(--primary-main);
   color: #fff; 
 }
 
@@ -316,14 +293,12 @@ a:hover {
   justify-content: center; 
   gap: calc(var(--spacing-unit) * 2.5); 
   background-color: var(--background-default); 
-  /* .page-section class already provides top/bottom padding */
 }
-
 .illustration-card-placeholder {
   background-color: var(--background-paper);
   border-radius: var(--border-radius-large);
   box-shadow: var(--box-shadow-2);
-  padding: calc(var(--spacing-unit) * 3); 
+  padding: calc(var(--spacing-unit) * 1.5); 
   flex-basis: 380px; 
   flex-grow: 1; 
   max-width: 420px; 
@@ -331,373 +306,241 @@ a:hover {
   display: flex;
   flex-direction: column; 
   align-items: stretch; 
-  justify-content: flex-start; 
+  justify-content: center; 
   text-align: center;
   color: var(--text-secondary);
   font-size: 1.2rem;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  overflow: hidden; /* Add this for safety with image border-radius */
-  /* padding: calc(var(--spacing-unit) * 3); /* This padding is confirmed as existing */
+  overflow: hidden;
 }
-
 .illustration-card-placeholder img {
-  display: block; /* Add this for good practice */
+  display: block;
   width: 100%;
   height: auto; 
+  max-height: 220px; 
   border-radius: var(--border-radius-medium); 
-  object-fit: cover; 
-  /* Consider a max-height if images could be excessively tall, or rely on natural aspect ratio */
+  object-fit: contain; 
 }
-
-
 .illustration-card-placeholder:hover {
   transform: translateY(-8px);
   box-shadow: var(--box-shadow-card-hover);
 }
 
 /* projects.html specific styles */
-/* .project-grid parent container (.page-section) handles overall vertical padding */
 .project-grid {
   display: grid; 
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-  gap: calc(var(--spacing-unit) * 1.5); /* Consistent gap */
-  /* padding: var(--spacing-unit) 0; This might be redundant if .page-section handles it */
+  gap: calc(var(--spacing-unit) * 1.5);
 }
-
-.project-card, .stat-card { /* Base card style */
+.project-card, .stat-card {
   background-color: var(--background-paper);
-  border-radius: var(--border-radius-large); /* 16px */
-  box-shadow: var(--box-shadow-2); /* A bit more pronounced base shadow for cards */
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--box-shadow-2);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   padding: calc(var(--spacing-unit) * 2);
-  overflow: hidden; /* If cards have images or elements that might bleed out */
-  border: none; /* Remove previous border if any, rely on shadow */
+  overflow: hidden;
+  border: none;
 }
-
 .project-card:hover, .stat-card:hover {
   transform: translateY(-8px);
-  box-shadow: var(--box-shadow-card-hover); /* Use the more pronounced hover shadow */
+  box-shadow: var(--box-shadow-card-hover);
 }
-
 .project-card h2 {
   margin-top: 0; 
-  color: var(--text-primary); /* Updated to use text-primary */
+  color: var(--text-primary);
   margin-bottom: calc(var(--spacing-unit) * 0.75); 
 }
 .project-card p {
-  color: var(--text-secondary); /* Ensure card paragraphs also use text-secondary */
+  color: var(--text-secondary);
 }
 
-
 /* Project Detail Page Specific Styles */
-/* .project-detail-container is a .page-section, handles vertical padding */
 .project-meta {
   font-size: 0.9em;
-  color: var(--secondary-color); 
+  color: var(--text-secondary); 
   margin-bottom: var(--spacing-unit);
   border-bottom: 1px solid var(--border-color);
   padding-bottom: calc(var(--spacing-unit) * 0.5);
 }
-
-.project-detail-container h2 { /* Inherits from general h2, specific border if needed */
+.project-detail-container h2 {
   border-bottom: 1px solid var(--border-color); 
   padding-bottom: calc(var(--spacing-unit) * 0.25);
 }
-
-.project-detail-container p, /* General p styling applies */
-.project-detail-container ul:not(.contact-links) { /* General ul styling applies */
+.project-detail-container p,
+.project-detail-container ul:not(.contact-links) {
   margin-bottom: var(--spacing-unit);
 }
-
 .project-visualization-placeholder {
   margin-top: var(--spacing-unit);
   margin-bottom: var(--spacing-unit);
-  border: 2px dashed var(--border-color); /* Updated border */
-  background-color: var(--background-default); /* Lighter than paper */
-  border-radius: var(--border-radius-medium); /* Added border-radius */
+  border: 2px dashed var(--border-color);
+  background-color: var(--background-default);
+  border-radius: var(--border-radius-medium);
   padding: var(--spacing-unit); 
-  color: var(--text-secondary); /* Added text color */
-  /* min-height, text-align, line-height from original inline style will be preserved */
+  color: var(--text-secondary);
 }
 
 /* About Page Specific Styles */
-/* .about-container is a .page-section, handles vertical padding */
-.about-container h2 { /* Inherits from general h2, specific border if needed */
+.about-container h2 {
   border-bottom: 1px solid var(--border-color);
   padding-bottom: calc(var(--spacing-unit) * 0.25);
 }
-
 .skills-list {
   list-style: none; 
   padding-left: 0;
   display: flex; 
   flex-wrap: wrap; 
-  gap: calc(var(--spacing-unit) * 0.75); /* Adjusted gap */
+  gap: calc(var(--spacing-unit) * 0.75);
   margin-bottom: var(--spacing-unit); 
 }
-
 .skills-list li {
   background-color: var(--primary-main); 
-  color: #fff; /* White text for contrast on primary background */
+  color: #fff;
   padding: calc(var(--spacing-unit) * 0.6) calc(var(--spacing-unit) * 1.2);
-  border-radius: var(--border-radius-medium); /* 8px */
+  border-radius: var(--border-radius-medium);
   font-size: 0.9rem;
   font-weight: 500;
   box-shadow: var(--box-shadow-1); 
-  border: none; /* Remove previous border */
+  border: none;
 }
 
 /* Contact Page Specific Styles */
-/* .contact-container is a .page-section, handles vertical padding */
-.contact-container p { /* General p styling applies */
+.contact-container p {
   line-height: 1.7; 
 }
-
 .contact-links {
   list-style: none;
   padding-left: 0;
-  margin-bottom: var(--spacing-unit); /* Space after contact links */
+  margin-bottom: var(--spacing-unit);
 }
-
 .contact-links li {
   margin-bottom: calc(var(--spacing-unit) * 0.5);
   font-size: 1.1em; 
 }
 
-
 /* === Scroll Animation Styling === */
-/* Base for all reveal elements */
 .reveal-on-scroll {
   opacity: 0;
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-  will-change: opacity, transform; /* Optimization for animations */
+  will-change: opacity, transform;
 }
 .reveal-on-scroll.is-visible {
   opacity: 1;
-  transform: none; /* Reset transform to its natural state */
+  transform: none;
 }
-
-/* Variation 1: Fade in + Translate Up (current .fade-in-section) */
-.reveal-fade-up {
-  transform: translateY(40px); /* Increased from 30px for more pronounced effect */
-}
-
-/* Variation 2: Fade in + Translate Left */
-.reveal-fade-left {
-  transform: translateX(-60px); /* Start from left */
-}
-
-/* Variation 3: Fade in + Translate Right */
-.reveal-fade-right {
-  transform: translateX(60px); /* Start from right */
-}
-
-/* Variation 4: Fade in + Scale Up */
-.reveal-scale-up {
-  transform: scale(0.9); /* Start slightly smaller */
-}
+.reveal-fade-up { transform: translateY(40px); }
+.reveal-fade-left { transform: translateX(-60px); }
+.reveal-fade-right { transform: translateX(60px); }
+.reveal-scale-up { transform: scale(0.9); }
 
 /* === Responsive Design === */
 @media (max-width: 768px) {
-  .container {
-    width: 90%; 
-  }
-
-  nav ul li {
-    display: block; 
-    /* margin: calc(var(--spacing-unit) * 0.5) 0; /* Replaced by link padding/border */
-    margin-bottom: 0; /* Remove if relying on link padding for separation */
-  }
-  nav ul li a {
-    display: block; /* Make the link take full width for easier tapping */
-    padding: calc(var(--spacing-unit) * 0.8) calc(var(--spacing-unit) * 1.25); /* Adjust padding for stacked items */
-    text-align: center; /* Center text in stacked links */
-    border-bottom: 1px solid rgba(255,255,255,0.1); /* Separator for stacked links if nav is dark */
-  }
-  nav ul li:last-child a {
-    border-bottom: none; /* Remove border from last item */
-  }
-  nav ul li a:hover { /* Keep hover border consistent with desktop */
-    border-bottom-color: var(--nav-link-hover-color, var(--primary-color)); 
-    /* background-color: var(--primary-color); /* Optional: more pronounced hover for mobile */
-    /* color: var(--nav-bg-color); */
-  }
-   nav ul li a.active { /* Ensure active border is still visible if it was only bottom */
-     border-bottom-width: 3px; /* Keep consistent with desktop active state */
-     border-bottom-color: var(--nav-link-active-border-color, var(--primary-color)); /* Explicitly set active border color */
-  }
-
-  /* Hero Responsive Adjustments */
-  #hero h1 {
-    font-size: 2.8em; /* Retain existing */
-    animation: typing 3.5s steps(30, end) forwards; /* Retain existing */
-  }
-  #hero p.subtitle {
-    font-size: 1.1em; /* Retain existing */
-  }
-  .hero-eyebrow { /* Responsive adjustment for eyebrow */
-    font-size: 0.9rem;
-  }
-
-  .skills-list {
-    justify-content: center; 
-  }
+  .container { width: 90%; }
+  nav ul li { display: block; margin-bottom: 0; }
+  nav ul li a { display: block; padding: calc(var(--spacing-unit) * 0.8) calc(var(--spacing-unit) * 1.25); text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  nav ul li:last-child a { border-bottom: none; }
+  nav ul li a:hover { border-bottom-color: var(--nav-link-hover-color, var(--primary-main)); }
+  nav ul li a.active { border-bottom-width: 3px; border-bottom-color: var(--nav-link-active-border-color, var(--primary-main)); }
+  #hero h1 { font-size: 2.8em; } 
+  #hero p.subtitle { font-size: 1.1em; }
+  .hero-eyebrow { font-size: 0.9rem; }
+  .skills-list { justify-content: center; }
 }
-
-@media (max-width: 600px) { /* General small screen adjustments */
-  .container {
-    width: 95%; 
-    padding: 0 calc(var(--spacing-unit) * 0.5);
-  }
-
-  .project-grid {
-    grid-template-columns: 1fr; 
-  }
-
-  h1:not(#hero h1) { 
-    font-size: 2em;
-  }
-  h2 {
-    font-size: 1.5em;
-  }
-  .illustration-card-placeholder { /* Responsive for illustrations */
-    flex-basis: 100%; 
-    max-width: 450px; 
-  }
+@media (max-width: 600px) {
+  .container { width: 95%; padding: 0 calc(var(--spacing-unit) * 0.5); }
+  .project-grid { grid-template-columns: 1fr; }
+  h1:not(#hero h1) { font-size: 2em; }
+  h2 { font-size: 1.5em; }
+  .illustration-card-placeholder { flex-basis: 100%; max-width: 450px; }
 }
-
-@media (max-width: 480px) { /* Specific small screen adjustments for Hero */
-  #hero h1 {
-    font-size: 2.2em; /* Retain existing */
-    animation: typing 3.5s steps(25, end) forwards; /* Retain existing */
-  }
-  #hero p.subtitle {
-    font-size: 1em; /* Retain existing */
-  }
-  .hero-eyebrow { /* Further responsive adjustment for eyebrow */
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-  }
-  #hero ~ #call-to-action .button-link {
-    padding: calc(var(--spacing-unit) * 0.8) calc(var(--spacing-unit) * 1.5); /* Retain existing */
-    font-size: 1em; /* Retain existing */
-  }
+@media (max-width: 480px) {
+  #hero h1 { font-size: 2.2em; } 
+  #hero p.subtitle { font-size: 1em; }
+  .hero-eyebrow { font-size: 0.8rem; letter-spacing: 0.15em; }
+  #hero ~ #call-to-action .button-link { padding: calc(var(--spacing-unit) * 0.8) calc(var(--spacing-unit) * 1.5); font-size: 1em; }
 }
-
-/* Responsive adjustments for illustration cards (already in example, ensure they are here) */
 @media (max-width: 850px) { 
-  .illustration-card-placeholder {
-    flex-basis: calc(50% - (var(--spacing-unit) * 1.25)); 
-  }
+  .illustration-card-placeholder { flex-basis: calc(50% - (var(--spacing-unit) * 1.25)); }
 }
-/* @media (max-width: 600px) .illustration-card-placeholder is already handled above */
-
 
 /* Stats Section Styling */
-.stats-section {
-  background-color: var(--background-paper); /* Distinct background for this section */
-  /* .page-section class already provides top/bottom padding */
-}
-
-.section-title {
-  text-align: center;
-  font-size: 2rem; 
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: calc(var(--spacing-unit) * 2.5); 
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-  gap: calc(var(--spacing-unit) * 2.5); 
-}
-
-.stat-card {
-  /* Base styles (.project-card, .stat-card) already applied for bg, border-radius, shadow, hover */
-  padding: calc(var(--spacing-unit) * 2.5); 
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.stat-icon-placeholder {
-  font-size: 2.5rem; 
-  color: var(--primary-main); 
-  margin-bottom: calc(var(--spacing-unit) * 1.5);
-  width: 60px; 
-  height: 60px;
-  line-height: 60px;
-  border: 2px dashed var(--border-color); 
-  border-radius: 50%; 
-}
-
-.stat-number {
-  font-size: 3rem; 
-  font-weight: 800; 
-  color: var(--text-primary); /* Fallback if gradient doesn't work */
-  margin-bottom: calc(var(--spacing-unit) * 0.5);
-  line-height: 1.1;
-}
-
-.gradient-text { /* Generic gradient text class */
-  background: linear-gradient(135deg, var(--primary-light) 30%, var(--primary-main) 90%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-/* Fallback for browsers that don't support background-clip: text */
+.stats-section { background-color: var(--background-paper); }
+.section-title { text-align: center; font-size: 2rem; font-weight: 700; color: var(--text-primary); margin-bottom: calc(var(--spacing-unit) * 2.5); }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: calc(var(--spacing-unit) * 2.5); }
+.stat-card { padding: calc(var(--spacing-unit) * 2.5); text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.stat-icon-placeholder { font-size: 2.5rem; color: var(--primary-main); margin-bottom: calc(var(--spacing-unit) * 1.5); width: 60px; height: 60px; line-height: 60px; border: 2px dashed var(--border-color); border-radius: 50%; }
+.stat-number { font-size: 3rem; font-weight: 800; color: var(--text-primary); margin-bottom: calc(var(--spacing-unit) * 0.5); line-height: 1.1; }
 @supports not (-webkit-background-clip: text) and (not (background-clip: text)) {
-  .gradient-text {
-    color: var(--primary-main); /* Fallback to solid color */
-  }
+  .gradient-text { color: var(--primary-main); }
 }
-
-.stat-label {
-  font-size: 1.1rem; 
-  color: var(--text-secondary);
-  font-weight: 500; 
-  margin-bottom: 0;
-}
-
+.stat-label { font-size: 1.1rem; color: var(--text-secondary); font-weight: 500; margin-bottom: 0; }
 
 /* Keyframes for typing animation */
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+@keyframes typing-inner { 
+  from { width: 0; }
+  to { width: 100%; }
 }
-
-/* Optional: if using border-right cursor */
 /*
 @keyframes blink-caret {
   from, to { border-color: transparent }
-  50% { border-color: var(--primary-color); }
+  50% { border-color: var(--primary-main); }
 }
 */
 
-/* Custom Scrollbar Styling (for WebKit browsers) */
-::-webkit-scrollbar {
-  width: 10px; /* Width of the scrollbar */
-  height: 10px; /* Height of the scrollbar (for horizontal scrollbars) */
+/* Custom Scrollbar Styling */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--background-default, #f1f1f1); border-radius: var(--border-radius-small, 0.25rem); } 
+::-webkit-scrollbar-thumb { background: var(--text-secondary, #888); border-radius: var(--border-radius-small, 0.25rem); border: 2px solid var(--background-default, #f1f1f1); } 
+::-webkit-scrollbar-thumb:hover { background: var(--primary-main, #555); } 
+::-webkit-scrollbar-corner { background: var(--background-default, #f1f1f1); }
+
+/* Footer Styling */
+.site-footer {
+  background-color: var(--footer-bg-color, #455a64);
+  color: var(--footer-text-color, rgba(255, 255, 255, 0.8));
+  padding: calc(var(--spacing-unit) * 3) 0; /* Generous padding */
+  text-align: center;
+  margin-top: calc(var(--spacing-unit) * 3); /* Space above the footer */
+  border-top: 3px solid var(--primary-main); /* Accent border */
 }
 
-::-webkit-scrollbar-track {
-  background: var(--light-bg-color, #f1f1f1); /* Background of the scrollbar track */
-  border-radius: var(--border-radius, 0.25rem);
+.site-footer .container {
+  /* Standard container behavior for width */
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--secondary-color, #888); /* Color of the scrollbar thumb */
-  border-radius: var(--border-radius, 0.25rem);
-  border: 2px solid var(--light-bg-color, #f1f1f1); /* Creates padding around thumb */
+.site-footer p {
+  margin-bottom: var(--spacing-unit);
+  color: var(--footer-text-color); /* Ensure paragraphs within footer also use this color */
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-color, #555); /* Color of the thumb on hover */
+.site-footer p.footer-statement {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff; /* Brighter white for the statement */
+    margin-bottom: calc(var(--spacing-unit) * 0.75);
 }
 
-::-webkit-scrollbar-corner {
-  background: var(--light-bg-color, #f1f1f1); /* Background of the scrollbar corner (if visible) */
+.footer-links {
+  margin-top: calc(var(--spacing-unit) * 1.5);
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+}
+
+.footer-links a {
+  color: var(--footer-text-color, rgba(255, 255, 255, 0.8));
+  text-decoration: none;
+  margin: 0 calc(var(--spacing-unit) * 0.75);
+  font-size: 1.1rem; /* Slightly larger for link visibility */
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #fff; /* Brighter white on hover */
+  text-decoration: underline;
+}
+
+.copyright {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6); /* More muted for copyright */
+  margin-top: calc(var(--spacing-unit) * 2);
+  margin-bottom: 0;
 }
