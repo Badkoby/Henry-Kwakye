@@ -1,31 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@700;800&display=swap');
 
 :root {
-  /* Fonts */
+  /* MUI-Inspired Theme */
+  --primary-main: #1976d2; /* MUI Blue */
+  --primary-dark: #115293; /* MUI Blue Dark */
+  --primary-light: #42a5f5; /* MUI Blue Light */
+  --secondary-main: #9c27b0; /* MUI Purple (example) */
+  --text-primary: rgba(0, 0, 0, 0.87);
+  --text-secondary: rgba(0, 0, 0, 0.6);
+  --background-default: #f5f5f5; /* Light gray page background */
+  --background-paper: #ffffff; /* White for cards, paper elements */
+  --border-color: rgba(0, 0, 0, 0.12); /* Subtle border */
+  --error-main: #d32f2f;
+  --warning-main: #ed6c02;
+  --info-main: #0288d1;
+  --success-main: #2e7d32;
+
+  /* Shadows (MUI-like elevation) - Can be simplified or expanded */
+  --box-shadow-1: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+  --box-shadow-2: 0px 3px 3px -2px rgba(0,0,0,0.2), 0px 3px 4px 0px rgba(0,0,0,0.14), 0px 1px 8px 0px rgba(0,0,0,0.12); /* Example for slightly more elevation */
+  --box-shadow-hover-1: 0px 4px 5px -2px rgba(0,0,0,0.2), 0px 7px 10px 1px rgba(0,0,0,0.14), 0px 2px 16px 1px rgba(0,0,0,0.12);
+  --box-shadow-card-hover: 0px 8px 10px -5px rgba(0,0,0,0.2), 0px 16px 24px 2px rgba(0,0,0,0.14), 0px 6px 30px 5px rgba(0,0,0,0.12); /* More pronounced for card hover */
+
+
+  /* Typography (retaining existing font families for now, can be updated) */
   --font-family-body: 'Inter', sans-serif;
   --font-family-heading: 'Montserrat', sans-serif;
 
-  /* Light Theme Color Palette */
-  --background-color: #FFFFFF;
-  --text-color: #212529; /* Darker gray for better contrast */
-  --primary-color: #007bff; /* Blue */
-  --primary-color-dark: #0056b3; /* Darker blue for active state */
-  --secondary-color: #6c757d; /* Muted gray */
-  --light-bg-color: #f8f9fa; /* Very light gray for card/section backgrounds */
-  --border-color: #dee2e6; /* Standard border color */
-  --link-color: var(--primary-color);
-  --link-hover-color: #0056b3; /* Darker blue for hover */
-  --heading-color: #343a40; /* Slightly different dark for headings */
-  --nav-bg-color: var(--heading-color); /* Using heading color for nav background */
-  --nav-link-color: var(--background-color); /* White links on dark nav */
-  --nav-link-hover-color: var(--primary-color); /* Use primary color for hover, was #ced4da */
-  --nav-link-active-color: var(--primary-color); /* Active link color */
-  --nav-link-active-border-color: var(--primary-color); /* Active link border color */
+  /* Spacing & Radius */
+  --spacing-unit: 1rem; /* Base unit for padding/margins (e.g., 16px) */
+  --border-radius-small: 4px;
+  --border-radius-medium: 8px;
+  --border-radius-large: 16px; /* For cards, matching MUI's theme.shape.borderRadius * 4 or similar */
 
-
-  /* Spacing & Radius (optional, but good for consistency) */
-  --spacing-unit: 1rem; /* Base unit for padding/margins */
-  --border-radius: 0.25rem; /* Standard border radius */
+  /* Nav specific (can be merged or kept separate) */
+  --nav-bg-color: var(--primary-dark); /* Darker blue for nav */
+  --nav-link-color: #ffffff;
+  --nav-link-hover-color: var(--primary-light);
+  --nav-link-active-color: var(--primary-light);
+  --nav-link-active-border-color: var(--primary-light);
 }
 
 /* === General Refinements === */
@@ -34,8 +47,12 @@ body {
   line-height: 1.6;
   margin: 0;
   padding: 0;
-  background-color: var(--background-color);
-  color: var(--text-color);
+  background-color: var(--background-default);
+  color: var(--text-primary);
+}
+
+html { /* Ensure rem units are consistent */
+  font-size: 16px; 
 }
 
 .container {
@@ -54,31 +71,48 @@ body {
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-family-heading);
-  color: var(--heading-color);
-  font-weight: 700; 
+  color: var(--text-primary); /* Updated to use text-primary for headings */
+  font-weight: 700; /* Default bold for headings */
 }
 h1 { 
-  font-weight: 800; 
-  font-size: 2.5em; /* Ensure h1 is impactful */
-  margin-top: 0; /* Typically 0 if .page-section handles top spacing */
-  margin-bottom: var(--spacing-unit);
+  font-size: 3rem; 
+  font-weight: 700; /* Consistent with example */
+  line-height: 1.2; 
+  margin-top: 0; 
+  margin-bottom: calc(var(--spacing-unit) * 2);
 } 
 h2 { 
-  font-size: 2em;
+  font-size: 2.25rem; 
+  font-weight: 700; 
+  line-height: 1.3; 
   margin-top: calc(var(--spacing-unit) * 2); 
-  margin-bottom: var(--spacing-unit);
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
 }
 h3 {
-  font-size: 1.5em;
+  font-size: 1.75rem; 
+  font-weight: 700; 
+  line-height: 1.4; 
   margin-top: calc(var(--spacing-unit) * 1.5);
-  margin-bottom: calc(var(--spacing-unit) * 0.75);
+  margin-bottom: var(--spacing-unit);
 }
+h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: var(--spacing-unit);
+}
+/* h5 and h6 can be added if needed, following a similar pattern */
 
 /* General Paragraph Styling */
 p {
+  font-size: 1rem;
+  line-height: 1.8; 
+  color: var(--text-secondary); /* Default paragraph text uses text-secondary */
   margin-bottom: var(--spacing-unit);
-  line-height: 1.7; 
 }
+/* If some paragraphs need to be primary text color, a utility class like .text-primary-p might be needed */
+/* or specific overrides in sections e.g. #hero p.subtitle */
+
 
 /* General List Styling */
 ul:not(.skills-list):not(nav ul):not(.contact-links), 
@@ -134,42 +168,77 @@ nav ul li a.active {
 
 /* General Link Styling */
 a {
-  color: var(--link-color);
+  color: var(--primary-main); /* Updated link color */
   text-decoration: none; 
 }
 a:hover {
-  color: var(--link-hover-color);
+  color: var(--primary-dark); /* Updated link hover color */
   text-decoration: underline; 
 }
 
 
 /* Button-like Link Standardization */
-.button-link { 
+.button-link {
   display: inline-block;
-  padding: calc(var(--spacing-unit) * 0.75) calc(var(--spacing-unit) * 1.5);
-  background-color: var(--primary-color);
-  color: var(--background-color); 
+  padding: 0.75rem 1.5rem; /* py:2, px:4 equivalent for 16px base */
+  font-family: var(--font-family-body);
+  font-size: 1rem; /* Matches example's 1.1rem if base is ~14.5px, or adjust */
+  font-weight: 600;
+  text-transform: none; /* As per example */
+  border-radius: var(--border-radius-large); /* 12px in example, use variable */
+  transition: all 0.2s ease-in-out;
   text-decoration: none;
-  border-radius: var(--border-radius);
-  transition: background-color 0.3s ease;
-  text-align: center;
-  font-family: var(--font-family-body); 
-  margin: calc(var(--spacing-unit) * 0.25); 
-  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Added transform and box-shadow */
+  cursor: pointer;
+  border: 2px solid transparent; /* Base for border transitions */
+  margin: calc(var(--spacing-unit) * 0.25); /* Retain small margin */
 }
 
-.button-link:hover {
-  background-color: var(--link-hover-color); 
-  color: var(--background-color); 
-  text-decoration: none; 
-  transform: translateY(-2px); /* Subtle lift */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow */
+.button-link.contained {
+  background-color: var(--primary-main);
+  color: #fff;
+  box-shadow: var(--box-shadow-1);
+}
+.button-link.contained:hover {
+  background-color: var(--primary-dark);
+  color: #fff; /* Ensure text color remains white */
+  box-shadow: var(--box-shadow-hover-1);
+  transform: translateY(-2px);
+  text-decoration: none; /* Ensure no underline */
+}
+.button-link.contained:active {
+  background-color: var(--primary-dark); /* Keep dark */
+  transform: translateY(0) scale(0.98);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
 }
 
-.button-link:active {
-  transform: translateY(0) scale(0.98); /* Pressed effect: slightly down from hover, or from base if not hovered */
-  background-color: var(--primary-color-dark, #0056b3); /* Use a darker shade of primary */
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.2); /* Inset shadow for pressed look */
+.button-link.outlined {
+  background-color: transparent;
+  color: var(--primary-main);
+  border: 2px solid var(--primary-main); /* Use var(--border-color) if primary border is too strong */
+}
+.button-link.outlined:hover {
+  background-color: rgba(25, 118, 210, 0.08); /* Subtle primary bg wash */
+  border-color: var(--primary-dark);
+  color: var(--primary-dark); /* Ensure text color darkens with border */
+  transform: translateY(-2px);
+  box-shadow: var(--box-shadow-1); /* Add subtle shadow on hover */
+  text-decoration: none; /* Ensure no underline */
+}
+.button-link.outlined:active {
+  background-color: rgba(25, 118, 210, 0.12);
+  transform: translateY(0) scale(0.98);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Remove general hover/active for .button-link if variants cover all cases */
+/* Or ensure these are defaults if no variant is applied */
+.button-link:hover:not(.contained):not(.outlined) {
+  transform: translateY(-2px);
+  box-shadow: var(--box-shadow-1);
+}
+.button-link:active:not(.contained):not(.outlined) {
+  transform: translateY(0) scale(0.98);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
 }
 
 
@@ -179,56 +248,100 @@ a:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 80vh;
+  min-height: 80vh; /* Adjust as needed, could be 70vh or other values */
   text-align: center;
   background: linear-gradient(135deg, var(--nav-bg-color, #2c3e50), var(--heading-color, #343a40));
-  color: var(--background-color, #fff);
-  padding-top: 0; /* Override page-section padding */
-  padding-bottom: 0; /* Override page-section padding */
-  /* border-bottom: none; /* Ensure no border from previous #page-header styles */
+  color: #fff; /* Default text color for hero, overridden by specific elements */
+  padding-top: 0; 
+  padding-bottom: 0; 
+}
+
+.hero-eyebrow {
+  font-family: var(--font-family-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary-main); /* Blue, as in example */
+  margin-bottom: calc(var(--spacing-unit) * 1);
 }
 
 .hero-content {
-  max-width: 800px;
-  margin-bottom: calc(var(--spacing-unit) * 2);
+  max-width: 800px; /* Or adjust as needed */
+  margin-bottom: calc(var(--spacing-unit) * 2); /* Space between text and CTA buttons */
 }
 
 #hero h1 {
-  font-size: 3.5em;
-  font-weight: 800;
-  margin-bottom: calc(var(--spacing-unit) * 0.75);
-  color: var(--background-color, #fff); /* Ensure it's light */
-  overflow: hidden; /* For typing animation */
-  /* border-right: .15em solid var(--primary-color); /* Optional: typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
-  letter-spacing: .05em; /* Adjust as needed */
+  font-size: 3.5em; /* Retain existing size */
+  font-weight: 800; /* Retain existing weight */
+  margin-bottom: calc(var(--spacing-unit) * 0.75); /* Retain existing margin */
+  /* Gradient Text */
+  background: linear-gradient(135deg, var(--primary-light) 30%, var(--primary-main) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; /* Make the actual text color transparent */
+  /* Fallback for non-supporting browsers (already set to #fff or var(--background-color) effectively by #hero color) */
+  overflow: hidden; 
+  white-space: nowrap; 
+  letter-spacing: .05em; 
   animation: 
     typing 3.5s steps(40, end) forwards;
-    /* blink-caret .75s step-end infinite; /* Optional: if using border-right cursor */
 }
 
 #hero p.subtitle {
-  font-size: 1.3em;
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 0; /* Handled by hero-content margin */
+  font-size: 1.3em; /* Retain existing size */
+  color: rgba(255, 255, 255, 0.85); /* Ensure good contrast */
+  margin-bottom: 0; /* Retain existing margin */
 }
 
 #call-to-action {
-  /* Visually part of the hero, so remove its own top padding if it was a separate section */
   padding-top: 0; 
-  background-color: transparent; /* Ensure it doesn't have a conflicting background */
-  /* text-align: center; /* Centering handled by #hero align-items: center */
+  background-color: transparent; 
+  margin-top: calc(var(--spacing-unit) * 2); /* Added margin for spacing from hero-content */
 }
 
 /* Adjust buttons within the hero/CTA context */
-#hero ~ #call-to-action .button-link, /* If #call-to-action is a sibling following #hero */
-#hero .button-link { /* If #call-to-action were nested (it's not in current HTML) */
-  padding: calc(var(--spacing-unit) * 0.9) calc(var(--spacing-unit) * 1.8);
-  font-size: 1.1em;
-  background-color: var(--primary-color); /* Stand out against dark hero */
-  color: #fff; /* Ensure text is light */
+#hero ~ #call-to-action .button-link, 
+#hero .button-link { 
+  padding: calc(var(--spacing-unit) * 0.9) calc(var(--spacing-unit) * 1.8); /* Retain existing */
+  font-size: 1.1em; /* Retain existing */
+  background-color: var(--primary-main); /* Ensure it uses the new primary variable */
+  color: #fff; 
 }
 
+/* Hero Illustrations Section */
+.hero-illustrations {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  gap: calc(var(--spacing-unit) * 2.5); 
+  background-color: var(--background-default); 
+  /* .page-section class already provides top/bottom padding */
+}
+
+.illustration-card-placeholder {
+  background-color: var(--background-paper);
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--box-shadow-2);
+  padding: calc(var(--spacing-unit) * 3); 
+  flex-basis: 380px; 
+  flex-grow: 1; 
+  max-width: 420px; 
+  min-height: 280px; 
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.illustration-card-placeholder:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--box-shadow-card-hover);
+}
 
 /* projects.html specific styles */
 /* .project-grid parent container (.page-section) handles overall vertical padding */
@@ -239,25 +352,30 @@ a:hover {
   /* padding: var(--spacing-unit) 0; This might be redundant if .page-section handles it */
 }
 
-.project-card {
-  border: 1px solid var(--border-color); 
-  padding: calc(var(--spacing-unit) * 1.25); 
-  background-color: var(--light-bg-color); 
-  border-radius: var(--border-radius); 
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1), 0 6px 20px rgba(0,0,0,0.1); /* Enhanced shadow */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover */
+.project-card, .stat-card { /* Base card style */
+  background-color: var(--background-paper);
+  border-radius: var(--border-radius-large); /* 16px */
+  box-shadow: var(--box-shadow-2); /* A bit more pronounced base shadow for cards */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  padding: calc(var(--spacing-unit) * 2);
+  overflow: hidden; /* If cards have images or elements that might bleed out */
+  border: none; /* Remove previous border if any, rely on shadow */
 }
 
-.project-card:hover {
-  transform: translateY(-5px) scale(1.02); /* Lift and scale effect */
-  box-shadow: 0 8px 16px rgba(0,0,0,0.15), 0 12px 30px rgba(0,0,0,0.15); /* More pronounced shadow on hover */
+.project-card:hover, .stat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--box-shadow-card-hover); /* Use the more pronounced hover shadow */
 }
 
 .project-card h2 {
   margin-top: 0; 
-  color: var(--heading-color); 
-  margin-bottom: calc(var(--spacing-unit) * 0.75); /* Space below card title */
+  color: var(--text-primary); /* Updated to use text-primary */
+  margin-bottom: calc(var(--spacing-unit) * 0.75); 
 }
+.project-card p {
+  color: var(--text-secondary); /* Ensure card paragraphs also use text-secondary */
+}
+
 
 /* Project Detail Page Specific Styles */
 /* .project-detail-container is a .page-section, handles vertical padding */
@@ -282,9 +400,12 @@ a:hover {
 .project-visualization-placeholder {
   margin-top: var(--spacing-unit);
   margin-bottom: var(--spacing-unit);
-  border: 1px dashed var(--secondary-color); 
-  background-color: var(--light-bg-color); 
+  border: 2px dashed var(--border-color); /* Updated border */
+  background-color: var(--background-default); /* Lighter than paper */
+  border-radius: var(--border-radius-medium); /* Added border-radius */
   padding: var(--spacing-unit); 
+  color: var(--text-secondary); /* Added text color */
+  /* min-height, text-align, line-height from original inline style will be preserved */
 }
 
 /* About Page Specific Styles */
@@ -299,17 +420,19 @@ a:hover {
   padding-left: 0;
   display: flex; 
   flex-wrap: wrap; 
-  gap: calc(var(--spacing-unit) * 0.5); 
-  margin-bottom: var(--spacing-unit); /* Space after skills list */
+  gap: calc(var(--spacing-unit) * 0.75); /* Adjusted gap */
+  margin-bottom: var(--spacing-unit); 
 }
 
 .skills-list li {
-  background-color: var(--light-bg-color); 
-  border: 1px solid var(--border-color); 
-  color: var(--secondary-color); 
-  padding: calc(var(--spacing-unit) * 0.5) var(--spacing-unit);
-  border-radius: var(--border-radius); 
-  font-size: 0.9em;
+  background-color: var(--primary-main); 
+  color: #fff; /* White text for contrast on primary background */
+  padding: calc(var(--spacing-unit) * 0.6) calc(var(--spacing-unit) * 1.2);
+  border-radius: var(--border-radius-medium); /* 8px */
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: var(--box-shadow-1); 
+  border: none; /* Remove previous border */
 }
 
 /* Contact Page Specific Styles */
@@ -331,15 +454,35 @@ a:hover {
 
 
 /* === Scroll Animation Styling === */
-.fade-in-section {
+/* Base for all reveal elements */
+.reveal-on-scroll {
   opacity: 0;
-  transform: translateY(30px); /* Start slightly lower */
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform; /* Optimization for animations */
+}
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: none; /* Reset transform to its natural state */
 }
 
-.fade-in-section.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+/* Variation 1: Fade in + Translate Up (current .fade-in-section) */
+.reveal-fade-up {
+  transform: translateY(40px); /* Increased from 30px for more pronounced effect */
+}
+
+/* Variation 2: Fade in + Translate Left */
+.reveal-fade-left {
+  transform: translateX(-60px); /* Start from left */
+}
+
+/* Variation 3: Fade in + Translate Right */
+.reveal-fade-right {
+  transform: translateX(60px); /* Start from right */
+}
+
+/* Variation 4: Fade in + Scale Up */
+.reveal-scale-up {
+  transform: scale(0.9); /* Start slightly smaller */
 }
 
 /* === Responsive Design === */
@@ -374,12 +517,14 @@ a:hover {
 
   /* Hero Responsive Adjustments */
   #hero h1 {
-    font-size: 2.8em;
-    /* Adjust animation steps if text wraps or looks odd */
-    animation: typing 3.5s steps(30, end) forwards; /* Example adjustment */
+    font-size: 2.8em; /* Retain existing */
+    animation: typing 3.5s steps(30, end) forwards; /* Retain existing */
   }
   #hero p.subtitle {
-    font-size: 1.1em;
+    font-size: 1.1em; /* Retain existing */
+  }
+  .hero-eyebrow { /* Responsive adjustment for eyebrow */
+    font-size: 0.9rem;
   }
 
   .skills-list {
@@ -397,29 +542,114 @@ a:hover {
     grid-template-columns: 1fr; 
   }
 
-  /* Adjust general h1/h2 for small screens, but hero has its own sizing */
-  h1:not(#hero h1) { /* Exclude hero h1 from general override */
+  h1:not(#hero h1) { 
     font-size: 2em;
   }
   h2 {
     font-size: 1.5em;
   }
+  .illustration-card-placeholder { /* Responsive for illustrations */
+    flex-basis: 100%; 
+    max-width: 450px; 
+  }
 }
 
 @media (max-width: 480px) { /* Specific small screen adjustments for Hero */
   #hero h1 {
-    font-size: 2.2em;
-    animation: typing 3.5s steps(25, end) forwards; /* Example adjustment */
+    font-size: 2.2em; /* Retain existing */
+    animation: typing 3.5s steps(25, end) forwards; /* Retain existing */
   }
   #hero p.subtitle {
-    font-size: 1em; /* Further reduce subtitle font size */
+    font-size: 1em; /* Retain existing */
   }
-  /* Button adjustments for very small screens if needed */
+  .hero-eyebrow { /* Further responsive adjustment for eyebrow */
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+  }
   #hero ~ #call-to-action .button-link {
-    padding: calc(var(--spacing-unit) * 0.8) calc(var(--spacing-unit) * 1.5);
-    font-size: 1em;
+    padding: calc(var(--spacing-unit) * 0.8) calc(var(--spacing-unit) * 1.5); /* Retain existing */
+    font-size: 1em; /* Retain existing */
   }
 }
+
+/* Responsive adjustments for illustration cards (already in example, ensure they are here) */
+@media (max-width: 850px) { 
+  .illustration-card-placeholder {
+    flex-basis: calc(50% - (var(--spacing-unit) * 1.25)); 
+  }
+}
+/* @media (max-width: 600px) .illustration-card-placeholder is already handled above */
+
+
+/* Stats Section Styling */
+.stats-section {
+  background-color: var(--background-paper); /* Distinct background for this section */
+  /* .page-section class already provides top/bottom padding */
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem; 
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: calc(var(--spacing-unit) * 2.5); 
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+  gap: calc(var(--spacing-unit) * 2.5); 
+}
+
+.stat-card {
+  /* Base styles (.project-card, .stat-card) already applied for bg, border-radius, shadow, hover */
+  padding: calc(var(--spacing-unit) * 2.5); 
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-icon-placeholder {
+  font-size: 2.5rem; 
+  color: var(--primary-main); 
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+  width: 60px; 
+  height: 60px;
+  line-height: 60px;
+  border: 2px dashed var(--border-color); 
+  border-radius: 50%; 
+}
+
+.stat-number {
+  font-size: 3rem; 
+  font-weight: 800; 
+  color: var(--text-primary); /* Fallback if gradient doesn't work */
+  margin-bottom: calc(var(--spacing-unit) * 0.5);
+  line-height: 1.1;
+}
+
+.gradient-text { /* Generic gradient text class */
+  background: linear-gradient(135deg, var(--primary-light) 30%, var(--primary-main) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+/* Fallback for browsers that don't support background-clip: text */
+@supports not (-webkit-background-clip: text) and (not (background-clip: text)) {
+  .gradient-text {
+    color: var(--primary-main); /* Fallback to solid color */
+  }
+}
+
+.stat-label {
+  font-size: 1.1rem; 
+  color: var(--text-secondary);
+  font-weight: 500; 
+  margin-bottom: 0;
+}
+
 
 /* Keyframes for typing animation */
 @keyframes typing {

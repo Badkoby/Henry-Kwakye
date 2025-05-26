@@ -16,20 +16,55 @@
     </div>
   </nav>
 
-  <header id="hero" class="page-section fade-in-section"> <!-- page-section for padding, fade-in for animation -->
+  <header id="hero" class="page-section reveal-on-scroll reveal-scale-up"> 
     <div class="hero-content">
+      <p class="hero-eyebrow">Data Analyst & Insights Specialist</p>
       <h1>Transforming Data into Insights</h1>
       <p class="subtitle">Welcome to my portfolio. I am a passionate data analyst dedicated to uncovering stories and driving decisions through data. I specialize in data visualization and statistical analysis.</p>
     </div>
-    <!-- Call to action section will be styled to fit into the hero visually -->
   </header>
-  <section id="call-to-action" class="fade-in-section">
-    <a href="projects.html" class="button-link">View My Projects</a>
-    <a href="about.html" class="button-link">Learn More About Me</a>
+  <section id="call-to-action" class="reveal-on-scroll reveal-fade-up">
+      <a href="projects.html" class="button-link contained">View My Projects</a> 
+      <a href="about.html" class="button-link outlined">Learn More About Me</a>
+      <!-- Removed fade-in-section from buttons themselves, parent handles it -->
   </section>
-  <!-- Note: The main content div.container that previously wrapped header and cta might be removed or adjusted -->
-  <!-- For now, assuming hero and call-to-action are direct children of body or a higher-level wrapper if any -->
+  
+  <section class="hero-illustrations page-section reveal-on-scroll reveal-fade-up">
+    <div class="illustration-card-placeholder reveal-on-scroll reveal-fade-left">
+      <p>Illustration 1: Analytics Visualization</p>
+    </div>
+    <div class="illustration-card-placeholder reveal-on-scroll reveal-fade-right">
+      <p>Illustration 2: Statistical Insights</p>
+    </div>
+  </section>
 
+  <section class="stats-section page-section reveal-on-scroll reveal-fade-up">
+    <div class="container"> 
+      <h2 class="section-title">Key Achievements & Impact</h2> 
+      <div class="stats-grid">
+        <div class="stat-card reveal-on-scroll reveal-scale-up">
+          <div class="stat-icon-placeholder">[ICO]</div> 
+          <div class="stat-number gradient-text">150K+</div>
+          <p class="stat-label">Revenue Generated</p>
+        </div>
+        <div class="stat-card reveal-on-scroll reveal-scale-up">
+          <div class="stat-icon-placeholder">[ICO]</div>
+          <div class="stat-number gradient-text">25%</div>
+          <p class="stat-label">Efficiency Improvement</p>
+        </div>
+        <div class="stat-card reveal-on-scroll reveal-scale-up">
+          <div class="stat-icon-placeholder">[ICO]</div>
+          <div class="stat-number gradient-text">95%</div>
+          <p class="stat-label">Customer Satisfaction</p>
+        </div>
+        <div class="stat-card reveal-on-scroll reveal-scale-up">
+          <div class="stat-icon-placeholder">[ICO]</div>
+          <div class="stat-number gradient-text">1.2M+</div>
+          <p class="stat-label">Data Points Analyzed</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <script src="script.js"></script>
 </body>

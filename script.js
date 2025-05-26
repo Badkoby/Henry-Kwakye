@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const revealElements = document.querySelectorAll('.fade-in-section');
+  const revealElements = document.querySelectorAll('.reveal-on-scroll');
 
   const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
