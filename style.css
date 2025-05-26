@@ -330,13 +330,25 @@ a:hover {
   min-height: 280px; 
   display: flex;
   flex-direction: column; 
-  align-items: center;
-  justify-content: center;
+  align-items: stretch; 
+  justify-content: flex-start; 
   text-align: center;
   color: var(--text-secondary);
   font-size: 1.2rem;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  overflow: hidden; /* Add this for safety with image border-radius */
+  /* padding: calc(var(--spacing-unit) * 3); /* This padding is confirmed as existing */
 }
+
+.illustration-card-placeholder img {
+  display: block; /* Add this for good practice */
+  width: 100%;
+  height: auto; 
+  border-radius: var(--border-radius-medium); 
+  object-fit: cover; 
+  /* Consider a max-height if images could be excessively tall, or rely on natural aspect ratio */
+}
+
 
 .illustration-card-placeholder:hover {
   transform: translateY(-8px);
