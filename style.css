@@ -439,7 +439,10 @@ a:hover {
   nav ul li { display: block; margin-bottom: 0; }
   nav ul li a { display: block; padding: calc(var(--spacing-unit) * 0.8) calc(var(--spacing-unit) * 1.25); text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
   nav ul li:last-child a { border-bottom: none; }
-  nav ul li a:hover { border-bottom-color: var(--nav-link-hover-color, var(--primary-main)); }
+  nav ul li a:hover { 
+    /* border-bottom-color: var(--nav-link-hover-color, var(--primary-main)); /* This line removed */
+    /* Other hover effects like background or text color can remain if they were here */
+  }
   nav ul li a.active { border-bottom-width: 3px; border-bottom-color: var(--nav-link-active-border-color, var(--primary-main)); }
   #hero h1 { font-size: 2.8em; } 
   #hero p.subtitle { font-size: 1.1em; }
@@ -523,6 +526,7 @@ a:hover {
 .footer-links {
   margin-top: calc(var(--spacing-unit) * 1.5);
   margin-bottom: calc(var(--spacing-unit) * 1.5);
+  text-align: center; /* Explicitly center the inline/inline-block children */
 }
 
 .footer-links a {
